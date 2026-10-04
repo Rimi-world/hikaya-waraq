@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المفضلة | حكاية وورق</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--pink:#ea929d;
+--pink-dark:#c96f7c;
+--cream:#fffaf1;
+--yellow:#f4d68b;
+--blue:#b8d9e6;
+--lavender:#d9cce4;
+--ink:#584348;
+--soft:#8c7479;
+--line:#eee1df;
+--white:#fff;
+--shadow:0 20px 50px rgba(105,72,80,.10);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:"Tajawal",sans-serif;
+background:var(--cream);
+color:var(--ink);
+}
+
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer}
+
+.announcement{
+background:var(--pink);
+color:#fff;
+text-align:center;
+padding:9px 15px;
+font-size:11px;
+font-weight:700;
+}
+
+header{
+position:sticky;
+top:0;
+z-index:100;
+background:rgba(255,250,241,.95);
+backdrop-filter:blur(18px);
+border-bottom:1px solid rgba(88,67,72,.08);
+}
+
+.nav{
+max-width:1240px;
+margin:auto;
+min-height:78px;
+padding:0 22px;
+display:grid;
+grid-template-columns:1fr auto 1fr;
+align-items:center;
+}
+
+.nav-links{
+display:flex;
+gap:22px;
+font-size:12px;
+font-weight:800;
+}
+
+.brand{text-align:center;font-weight:900}
+
+.brand-ar{
+display:block;
+font-size:23px;
+color:var(--pink-dark);
+}
+
+.brand-en{
+display:block;
+direction:ltr;
+font-size:6px;
+letter-spacing:3px;
+color:#9a8085;
+margin-top:3px;
+}
+
+.actions{
+display:flex;
+direction:ltr;
+gap:8px;
+}
+
+.icon-btn{
+width:40px;
+height:40px;
+border-radius:50%;
+border:1px solid var(--line);
+background:white;
+display:grid;
+place-items:center;
+position:relative;
+}
+
+.icon-btn svg{
+width:18px;
+height:18px;
+fill:none;
+stroke:currentColor;
+stroke-width:1.8;
+}
+
+.count{
+position:absolute;
+top:-4px;
+right:-3px;
+width:17px;
+height:17px;
+border-radius:50%;
+background:var(--pink-dark);
+color:white;
+display:grid;
+place-items:center;
+font-size:8px;
+font-weight:900;
+}
+
+/* TITLE */
+
+.hero{
+max-width:1200px;
+margin:auto;
+padding:70px 22px 38px;
+text-align:center;
+}
+
+.hero small{
+display:block;
+direction:ltr;
+color:var(--pink-dark);
+letter-spacing:3px;
+font-size:8px;
+font-weight:900;
+margin-bottom:8px;
+}
+
+.hero h1{
+font-size:clamp(38px,6vw,58px);
+font-weight:900;
+}
+
+.hero p{
+color:var(--soft);
+font-size:11px;
+margin-top:9px;
+}
+
+/* PRODUCTS */
+
+.wrap{
+max-width:1200px;
+margin:auto;
+padding:0 22px 90px;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:17px;
+}
+
+.product{
+background:white;
+border:1px solid var(--line);
+border-radius:27px;
+overflow:hidden;
+transition:.3s;
+}
+
+.product:hover{
+transform:translateY(-5px);
+box-shadow:var(--shadow);
+}
+
+.art{
+height:270px;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+cursor:pointer;
+}
+
+.remove{
+position:absolute;
+left:13px;
+top:13px;
+width:38px;
+height:38px;
+border-radius:50%;
+border:0;
+background:white;
+color:var(--pink-dark);
+font-size:18px;
+z-index:5;
+}
+
+.book{
+width:145px;
+height:195px;
+border-radius:9px 19px 19px 9px;
+border:5px solid rgba(255,255,255,.6);
+box-shadow:10px 15px 25px rgba(80,55,65,.12);
+transform:rotate(-5deg);
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:15px;
+}
+
+.book-shape{
+width:58px;
+height:58px;
+border-radius:50%;
+background:#f4d68b;
+margin-bottom:13px;
+}
+
+.book strong{
+color:white;
+font-size:15px;
+line-height:1.4;
+}
+
+.product-info{
+padding:16px;
+}
+
+.type{
+color:var(--pink-dark);
+font-size:8px;
+font-weight:900;
+}
+
+.product-info h3{
+font-size:14px;
+margin:5px 0 13px;
+}
+
+.bottom{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.price{
+font-size:13px;
+font-weight:900;
+}
+
+.add{
+border:0;
+background:var(--ink);
+color:white;
+border-radius:100px;
+padding:10px 14px;
+font-size:9px;
+font-weight:800;
+}
+
+/* EMPTY */
+
+.empty{
+display:none;
+max-width:650px;
+margin:0 auto 90px;
+padding:70px 25px;
+background:#f7dadd;
+border-radius:32px;
+text-align:center;
+}
+
+.heart{
+width:65px;
+height:65px;
+margin:0 auto 20px;
+position:relative;
+transform:rotate(-45deg);
+background:white;
+border-radius:8px 0 8px 0;
+}
+
+.heart:before,
+.heart:after{
+content:"";
+position:absolute;
+width:65px;
+height:65px;
+border-radius:50%;
+background:white;
+}
+
+.heart:before{
+top:-32px;
+left:0;
+}
+
+.heart:after{
+left:32px;
+top:0;
+}
+
+.empty h2{
+font-size:25px;
+margin-bottom:8px;
+}
+
+.empty p{
+font-size:11px;
+line-height:1.9;
+color:var(--soft);
+}
+
+.shop-btn{
+display:inline-block;
+margin-top:20px;
+background:var(--ink);
+color:white;
+padding:12px 22px;
+border-radius:100px;
+font-size:10px;
+font-weight:900;
+}
+
+/* TOAST */
+
+.toast{
+position:fixed;
+bottom:25px;
+left:50%;
+transform:translate(-50%,100px);
+opacity:0;
+background:var(--ink);
+color:white;
+padding:12px 18px;
+border-radius:100px;
+z-index:500;
+font-size:10px;
+transition:.3s;
+}
+
+.toast.show{
+transform:translate(-50%,0);
+opacity:1;
+}
+
+/* FOOTER */
+
+footer{
+background:var(--pink);
+color:white;
+}
+
+.footer{
+max-width:1200px;
+margin:auto;
+padding:45px 22px;
+display:flex;
+justify-content:space-between;
+gap:30px;
+}
+
+.footer-logo{
+font-size:24px;
+font-weight:900;
+}
+
+.footer p{
+color:#fff1f0;
+font-size:10px;
+line-height:2;
+margin-top:7px;
+}
+
+.footer-links a{
+display:inline-block;
+margin:10px;
+font-size:10px;
+}
+
+.copy{
+text-align:center;
+border-top:1px solid rgba(255,255,255,.2);
+padding:16px;
+font-size:9px;
+direction:ltr;
+}
+
+@media(max-width:900px){
+.nav-links{display:none}
+.nav{grid-template-columns:1fr auto 1fr}
+.products{grid-template-columns:repeat(3,1fr)}
+}
+
+@media(max-width:650px){
+
+.nav{
+padding:0 13px;
+min-height:68px;
+}
+
+.brand-ar{font-size:18px}
+.brand-en{font-size:5px}
+
+.hero{
+padding:50px 15px 30px;
+}
+
+.hero h1{font-size:39px}
+
+.wrap{padding:0 13px 65px}
+
+.products{
+grid-template-columns:1fr 1fr;
+gap:9px;
+}
+
+.art{height:210px}
+
+.book{
+transform:rotate(-5deg) scale(.8);
+}
+
+.product{
+border-radius:20px;
+}
+
+.product-info{
+padding:12px;
+}
+
+.product-info h3{
+font-size:11px;
+}
+
+.add{
+padding:9px 10px;
+font-size:8px;
+}
+
+.price{
+font-size:10px;
+}
+
+.footer{
+display:block;
+}
+
+.footer-links{
+margin-top:20px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="announcement">
+الأشياء التي أحببتموها، محفوظة هنا
+</div>
+
+<header>
+<nav class="nav">
+
+<div class="nav-links">
+<a href="index.html">الرئيسية</a>
+<a href="shop.html">المتجر</a>
+<a href="shop.html?category=stories">القصص</a>
+<a href="shop.html?category=stationery">القرطاسية</a>
+</div>
+
+<a class="brand" href="index.html">
+<span class="brand-ar">حكاية وورق</span>
+<span class="brand-en">HIKAYA & WARAQ</span>
+</a>
+
+<div class="actions">
+
+<a class="icon-btn" href="favorites.html">
+<svg viewBox="0 0 24 24">
+<path d="M20.8 4.6a5.4 5.4 0 0 0-7.6 0L12 5.8l-1.2-1.2a5.4 5.4 0 0 0-7.6 7.6L12 21l8.8-8.8a5.4 5.4 0 0 0 0-7.6Z"/>
+</svg>
+<span class="count" id="favCount">0</span>
+</a>
+
+<a class="icon-btn" href="cart.html">
+<svg viewBox="0 0 24 24">
+<path d="M6 8h12l1 12H5L6 8Z"/>
+<path d="M9 9V6a3 3 0 0 1 6 0v3"/>
+</svg>
+<span class="count" id="cartCount">0</span>
+</a>
+
+</div>
+
+</nav>
+</header>
+
+<section class="hero">
+<small>YOUR LITTLE FAVORITES</small>
+<h1>الأشياء التي أحببتها</h1>
+<p>كل اختياراتكم الجميلة محفوظة في مكان واحد.</p>
+</section>
+
+<main>
+
+<div class="wrap">
+<div class="products" id="products"></div>
+</div>
+
+<div class="empty" id="empty">
+<div class="heart"></div>
+
+<h2>المفضلة تنتظر اختياراتك</h2>
+
+<p>
+اضغطوا على القلب بجانب أي منتج يعجبكم،
+وسيظهر هنا تلقائيًا.
+</p>
+
+<a href="shop.html" class="shop-btn">
+اكتشفوا المتجر
+</a>
+</div>
+
+</main>
+
+<footer>
+
+<div class="footer">
+
+<div>
+<div class="footer-logo">حكاية وورق</div>
+<p>كتب وقصص وقرطاسية لعالم الصغار وخيالهم الكبير.</p>
+</div>
+
+<div class="footer-links">
+<a href="index.html">الرئيسية</a>
+<a href="shop.html">المتجر</a>
+<a href="cart.html">السلة</a>
+</div>
+
+</div>
+
+<div class="copy">
+HIKAYA & WARAQ © 2026
+</div>
+
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+
+const products = [
+{id:"moon-story",name:"حكايات تحت ضوء القمر",type:"قصص أطفال",price:4.900,color:"#dd8492"},
+{id:"little-adventures",name:"مغامرات صغيرة",type:"قصص أطفال",price:4.500,color:"#9bc9d6"},
+{id:"first-words",name:"كلماتي الأولى",type:"كتاب تعليمي",price:3.800,color:"#e5a8a2"},
+{id:"letters-book",name:"ألعب مع الحروف",type:"كتاب تعليمي",price:3.600,color:"#8ebdcc"},
+{id:"numbers-book",name:"رحلتي مع الأرقام",type:"كتاب تعليمي",price:3.900,color:"#bfa8d1"},
+{id:"coloring-dreams",name:"كتاب ألوّن أحلامي",type:"تلوين وأنشطة",price:2.900,color:"#dc8f9a"},
+{id:"activity-book",name:"كتاب يومي الممتع",type:"أنشطة",price:3.300,color:"#a4cbd7"},
+{id:"pastel-pencils",name:"ألوان باستيل الصغيرة",type:"رسم وتلوين",price:3.500,color:"#eecb67"},
+{id:"story-notebook",name:"دفتر حكاياتي",type:"دفاتر",price:2.300,color:"#efb8c0"},
+{id:"dream-notebook",name:"دفتر أحلام صغيرة",type:"دفاتر",price:2.500,color:"#acd4df"},
+{id:"lavender-case",name:"مقلمة لافندر",type:"مقالم",price:3.200,color:"#b9a2cc"},
+{id:"pink-case",name:"مقلمة وردية",type:"مقالم",price:3.200,color:"#eaa2ac"},
+{id:"stickers",name:"ملصقات حكاية",type:"ملصقات",price:1.500,color:"#f2d77e"},
+{id:"school-kit",name:"مجموعة بداية المدرسة",type:"للمدرسة",price:6.900,color:"#9bcbd7"},
+{id:"little-gift",name:"بوكس قارئ صغير",type:"هدايا",price:8.900,color:"#efb9c0"},
+{id:"creative-box",name:"بوكس الإبداع",type:"هدايا",price:9.500,color:"#a9d4df"}
+];
+
+function getFavorites(){
+return JSON.parse(
+localStorage.getItem("hikayaFavorites") || "[]"
+);
+}
+
+function getCart(){
+return JSON.parse(
+localStorage.getItem("hikayaCart") || "[]"
+);
+}
+
+function render(){
+
+const favorites = getFavorites();
+
+const chosen = products.filter(
+product => favorites.includes(product.id)
+);
+
+const container =
+document.getElementById("products");
+
+const empty =
+document.getElementById("empty");
+
+container.innerHTML = "";
+
+if(chosen.length === 0){
+
+document.querySelector(".wrap").style.display = "none";
+empty.style.display = "block";
+
+}else{
+
+document.querySelector(".wrap").style.display = "block";
+empty.style.display = "none";
+
+}
+
+chosen.forEach(product=>{
+
+const card = document.createElement("article");
+
+card.className = "product";
+
+card.innerHTML = `
+
+<div
+class="art"
+style="background:${product.color}22"
+onclick="window.location.href='product.html?id=${product.id}'"
+>
+
+<button
+class="remove"
+onclick="event.stopPropagation(); removeFavorite('${product.id}')"
+aria-label="إزالة من المفضلة"
+>
+×
+</button>
+
+<div
+class="book"
+style="background:${product.color}"
+>
+<div class="book-shape"></div>
+
+<strong>
+${product.name}
+</strong>
+</div>
+
+</div>
+
+<div class="product-info">
+
+<div class="type">
+${product.type}
+</div>
+
+<h3>
+${product.name}
+</h3>
+
+<div class="bottom">
+
+<span class="price">
+${product.price.toFixed(3)} ر.ع
+</span>
+
+<button
+class="add"
+onclick="addToCart('${product.id}')"
+>
+أضف للسلة
+</button>
+
+</div>
+
+</div>
+`;
+
+container.appendChild(card);
+
+});
+
+updateCounts();
+}
+
+function removeFavorite(id){
+
+let favorites = getFavorites();
+
+favorites =
+favorites.filter(item => item !== id);
+
+localStorage.setItem(
+"hikayaFavorites",
+JSON.stringify(favorites)
+);
+
+showToast("تمت الإزالة من المفضلة");
+
+render();
+}
+
+function addToCart(id){
+
+const product =
+products.find(item => item.id === id);
+
+if(!product) return;
+
+const cart = getCart();
+
+const existing =
+cart.find(item => item.id === id);
+
+if(existing){
+
+existing.quantity += 1;
+
+}else{
+
+cart.push({
+id:product.id,
+name:product.name,
+price:product.price,
+quantity:1
+});
+
+}
+
+localStorage.setItem(
+"hikayaCart",
+JSON.stringify(cart)
+);
+
+updateCounts();
+
+showToast("تمت الإضافة إلى السلة");
+}
+
+function updateCounts(){
+
+const cart = getCart();
+
+const total = cart.reduce(
+(sum,item)=>sum+(item.quantity || 1),
+0
+);
+
+document.getElementById("cartCount").textContent =
+total;
+
+document.getElementById("favCount").textContent =
+getFavorites().length;
+}
+
+function showToast(message){
+
+const toast =
+document.getElementById("toast");
+
+toast.textContent = message;
+
+toast.classList.add("show");
+
+clearTimeout(window.toastTimer);
+
+window.toastTimer = setTimeout(()=>{
+toast.classList.remove("show");
+},1700);
+}
+
+render();
+
+</script>
+
+</body>
+</html>
