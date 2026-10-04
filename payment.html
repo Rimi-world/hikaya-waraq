@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الدفع التجريبي | حكاية وورق</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--pink:#ea929d;
+--pink-dark:#c96f7c;
+--cream:#fffaf1;
+--yellow:#f4d68b;
+--blue:#b8d9e6;
+--ink:#584348;
+--soft:#8c7479;
+--line:#eee1df;
+--white:#fff;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:"Tajawal",sans-serif;
+background:var(--cream);
+color:var(--ink);
+}
+
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer}
+
+.announcement{
+background:var(--pink);
+color:white;
+text-align:center;
+padding:9px 15px;
+font-size:11px;
+font-weight:700;
+}
+
+header{
+border-bottom:1px solid rgba(88,67,72,.08);
+background:rgba(255,250,241,.96);
+}
+
+.nav{
+max-width:1100px;
+min-height:78px;
+padding:0 22px;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.brand{text-align:center;font-weight:900}
+
+.brand-ar{
+display:block;
+color:var(--pink-dark);
+font-size:23px;
+}
+
+.brand-en{
+display:block;
+direction:ltr;
+color:#9a8085;
+font-size:6px;
+letter-spacing:3px;
+margin-top:3px;
+}
+
+.back{
+border:1px solid var(--line);
+background:white;
+padding:10px 16px;
+border-radius:100px;
+font-size:10px;
+font-weight:800;
+}
+
+.demo-label{
+font-size:9px;
+color:var(--soft);
+}
+
+/* progress */
+
+.progress-wrap{
+max-width:600px;
+margin:45px auto 0;
+padding:0 20px;
+}
+
+.progress{
+display:flex;
+align-items:center;
+}
+
+.step{
+flex:1;
+text-align:center;
+position:relative;
+}
+
+.step:not(:last-child):after{
+content:"";
+position:absolute;
+height:2px;
+width:100%;
+background:#ead9d7;
+top:15px;
+right:50%;
+z-index:-1;
+}
+
+.circle{
+width:31px;
+height:31px;
+margin:auto;
+border-radius:50%;
+background:#ead9d7;
+color:white;
+display:grid;
+place-items:center;
+font-size:9px;
+font-weight:900;
+}
+
+.step.done .circle,
+.step.active .circle{
+background:var(--pink-dark);
+}
+
+.step span{
+display:block;
+margin-top:7px;
+font-size:8px;
+font-weight:800;
+color:var(--soft);
+}
+
+/* page */
+
+.page{
+max-width:1000px;
+margin:45px auto 90px;
+padding:0 22px;
+}
+
+.title{
+text-align:center;
+margin-bottom:30px;
+}
+
+.title small{
+display:block;
+direction:ltr;
+color:var(--pink-dark);
+letter-spacing:3px;
+font-size:8px;
+font-weight:900;
+}
+
+.title h1{
+font-size:clamp(35px,5vw,50px);
+margin-top:6px;
+}
+
+.title p{
+color:var(--soft);
+font-size:11px;
+margin-top:8px;
+}
+
+.layout{
+display:grid;
+grid-template-columns:1fr .75fr;
+gap:24px;
+align-items:start;
+}
+
+/* payment */
+
+.payment-card{
+background:white;
+border:1px solid var(--line);
+border-radius:30px;
+padding:30px;
+}
+
+.payment-card h2{
+font-size:20px;
+margin-bottom:7px;
+}
+
+.payment-card > p{
+color:var(--soft);
+font-size:10px;
+line-height:1.8;
+}
+
+.demo-box{
+margin-top:22px;
+background:#fff3d5;
+border-radius:18px;
+padding:15px;
+display:flex;
+gap:12px;
+align-items:flex-start;
+}
+
+.demo-icon{
+flex:0 0 33px;
+width:33px;
+height:33px;
+border-radius:50%;
+background:var(--yellow);
+display:grid;
+place-items:center;
+font-size:15px;
+font-weight:900;
+}
+
+.demo-box strong{
+display:block;
+font-size:10px;
+margin-bottom:3px;
+}
+
+.demo-box p{
+font-size:9px;
+line-height:1.7;
+color:#79655e;
+}
+
+.method-title{
+margin:28px 0 12px;
+font-size:10px;
+font-weight:900;
+}
+
+.method{
+width:100%;
+border:2px solid var(--pink);
+background:#fffafa;
+border-radius:18px;
+padding:17px;
+display:flex;
+align-items:center;
+gap:13px;
+}
+
+.radio{
+width:18px;
+height:18px;
+border-radius:50%;
+border:5px solid var(--pink-dark);
+background:white;
+}
+
+.method-text{
+flex:1;
+}
+
+.method-text strong{
+display:block;
+font-size:11px;
+}
+
+.method-text span{
+display:block;
+color:var(--soft);
+font-size:8px;
+margin-top:3px;
+}
+
+.card-shape{
+width:43px;
+height:29px;
+border-radius:6px;
+background:var(--ink);
+position:relative;
+}
+
+.card-shape:before{
+content:"";
+position:absolute;
+top:7px;
+left:0;
+width:100%;
+height:5px;
+background:#f1c7cd;
+}
+
+.fake-fields{
+margin-top:18px;
+padding:20px;
+border:1px dashed #dfc9c7;
+border-radius:18px;
+background:#fffdfa;
+}
+
+.fake-fields small{
+display:block;
+color:var(--pink-dark);
+font-weight:900;
+font-size:8px;
+margin-bottom:12px;
+}
+
+.fake-input{
+height:45px;
+border:1px solid var(--line);
+border-radius:12px;
+background:#f7f2ef;
+margin-top:9px;
+padding:0 13px;
+display:flex;
+align-items:center;
+color:#b09b9f;
+font-size:9px;
+}
+
+.fake-row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:9px;
+}
+
+.pay{
+width:100%;
+min-height:53px;
+margin-top:22px;
+border:0;
+border-radius:100px;
+background:var(--ink);
+color:white;
+font-size:11px;
+font-weight:900;
+}
+
+.pay:hover{opacity:.92}
+
+.safety{
+text-align:center;
+color:var(--soft);
+font-size:8px;
+line-height:1.7;
+margin-top:11px;
+}
+
+/* summary */
+
+.summary{
+background:#f7dadd;
+border-radius:30px;
+padding:27px;
+}
+
+.summary small{
+display:block;
+direction:ltr;
+color:var(--pink-dark);
+letter-spacing:2px;
+font-size:7px;
+font-weight:900;
+}
+
+.summary h2{
+font-size:22px;
+margin:5px 0 20px;
+}
+
+.customer{
+background:rgba(255,255,255,.55);
+border-radius:17px;
+padding:14px;
+margin-bottom:17px;
+}
+
+.customer strong{
+display:block;
+font-size:10px;
+}
+
+.customer span{
+display:block;
+font-size:8px;
+color:var(--soft);
+margin-top:5px;
+}
+
+.products{
+display:flex;
+flex-direction:column;
+gap:9px;
+}
+
+.product{
+display:flex;
+justify-content:space-between;
+gap:15px;
+padding:9px 0;
+border-bottom:1px solid rgba(88,67,72,.08);
+}
+
+.product-name{
+font-size:9px;
+font-weight:800;
+}
+
+.product-name span{
+color:var(--soft);
+font-size:8px;
+font-weight:500;
+}
+
+.product-price{
+white-space:nowrap;
+font-size:9px;
+font-weight:900;
+}
+
+.total{
+display:flex;
+justify-content:space-between;
+border-top:1px solid rgba(88,67,72,.14);
+padding-top:17px;
+margin-top:17px;
+font-size:16px;
+font-weight:900;
+}
+
+.empty{
+display:none;
+max-width:600px;
+margin:80px auto;
+padding:55px 25px;
+background:#f7dadd;
+border-radius:30px;
+text-align:center;
+}
+
+.empty h2{font-size:24px}
+
+.empty p{
+color:var(--soft);
+font-size:10px;
+margin:8px 0 20px;
+}
+
+.empty a{
+display:inline-block;
+background:var(--ink);
+color:white;
+border-radius:100px;
+padding:12px 20px;
+font-size:10px;
+font-weight:900;
+}
+
+@media(max-width:750px){
+.layout{grid-template-columns:1fr}
+.summary{order:-1}
+}
+
+@media(max-width:550px){
+.nav{padding:0 13px;min-height:68px}
+.demo-label{display:none}
+.brand-ar{font-size:18px}
+.brand-en{font-size:5px}
+.page{padding:0 13px;margin-top:35px}
+.payment-card,.summary{padding:20px;border-radius:23px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="announcement">
+آخر خطوة قبل أن تبدأ الحكاية
+</div>
+
+<header>
+<nav class="nav">
+
+<a href="checkout.html" class="back">
+العودة
+</a>
+
+<a href="index.html" class="brand">
+<span class="brand-ar">حكاية وورق</span>
+<span class="brand-en">HIKAYA & WARAQ</span>
+</a>
+
+<span class="demo-label">
+DEMO CHECKOUT
+</span>
+
+</nav>
+</header>
+
+<div class="progress-wrap">
+<div class="progress">
+
+<div class="step done">
+<div class="circle">✓</div>
+<span>السلة</span>
+</div>
+
+<div class="step done">
+<div class="circle">✓</div>
+<span>البيانات</span>
+</div>
+
+<div class="step active">
+<div class="circle">3</div>
+<span>الدفع</span>
+</div>
+
+</div>
+</div>
+
+<main class="page" id="page">
+
+<div class="title">
+<small>DEMO PAYMENT</small>
+<h1>الدفع</h1>
+<p>واجهة تجريبية لعرض تجربة إتمام الطلب.</p>
+</div>
+
+<div class="layout">
+
+<section class="payment-card">
+
+<h2>طريقة الدفع</h2>
+
+<p>
+اخترنا هنا نموذج دفع تجريبي لإكمال تجربة المتجر
+بدون تنفيذ أي معاملة مالية حقيقية.
+</p>
+
+<div class="demo-box">
+<div class="demo-icon">i</div>
+
+<div>
+<strong>هذه صفحة عرض فقط</strong>
+<p>
+لا تُدخل أي بيانات بطاقة حقيقية.
+الحقول أدناه غير قابلة للكتابة ولا يتم حفظ أي بيانات دفع.
+</p>
+</div>
+</div>
+
+<div class="method-title">
+طريقة الدفع التجريبية
+</div>
+
+<div class="method">
+
+<div class="radio"></div>
+
+<div class="method-text">
+<strong>بطاقة — محاكاة</strong>
+<span>للعرض داخل نموذج المتجر فقط</span>
+</div>
+
+<div class="card-shape"></div>
+
+</div>
+
+<div class="fake-fields">
+
+<small>DEMO CARD PREVIEW</small>
+
+<div class="fake-input">
+رقم البطاقة — غير قابل للإدخال
+</div>
+
+<div class="fake-row">
+
+<div class="fake-input">
+MM / YY
+</div>
+
+<div class="fake-input">
+CVV
+</div>
+
+</div>
+
+</div>
+
+<button class="pay" onclick="completeDemoOrder()">
+تأكيد الطلب التجريبي
+</button>
+
+<div class="safety">
+بالضغط على الزر لن يتم خصم أي مبلغ أو إرسال أي بيانات دفع.
+</div>
+
+</section>
+
+
+<aside class="summary">
+
+<small>ORDER SUMMARY</small>
+<h2>ملخص الطلب</h2>
+
+<div class="customer" id="customer"></div>
+
+<div class="products" id="products"></div>
+
+<div class="total">
+<span>الإجمالي</span>
+<span id="total">0.000 ر.ع</span>
+</div>
+
+</aside>
+
+</div>
+
+</main>
+
+
+<div class="empty" id="empty">
+
+<h2>لا يوجد طلب جاهز للدفع</h2>
+
+<p>
+ارجعوا إلى المتجر وأضيفوا المنتجات أولًا.
+</p>
+
+<a href="shop.html">
+العودة للمتجر
+</a>
+
+</div>
+
+
+<script>
+
+function getCart(){
+return JSON.parse(
+localStorage.getItem("hikayaCart") || "[]"
+);
+}
+
+function getCheckout(){
+return JSON.parse(
+localStorage.getItem("hikayaCheckout") || "null"
+);
+}
+
+function render(){
+
+const cart = getCart();
+const checkout = getCheckout();
+
+if(cart.length === 0 || !checkout){
+
+document.getElementById("page").style.display = "none";
+document.querySelector(".progress-wrap").style.display = "none";
+document.getElementById("empty").style.display = "block";
+
+return;
+}
+
+document.getElementById("customer").innerHTML = `
+<strong>${checkout.name}</strong>
+<span>${checkout.governorate} — ${checkout.wilayat}</span>
+`;
+
+const products =
+document.getElementById("products");
+
+let total = 0;
+
+cart.forEach(item=>{
+
+const quantity = item.quantity || 1;
+const itemTotal =
+Number(item.price) * quantity;
+
+total += itemTotal;
+
+const row =
+document.createElement("div");
+
+row.className = "product";
+
+row.innerHTML = `
+<div class="product-name">
+${item.name}
+<span> × ${quantity}</span>
+</div>
+
+<div class="product-price">
+${itemTotal.toFixed(3)} ر.ع
+</div>
+`;
+
+products.appendChild(row);
+
+});
+
+document.getElementById("total").textContent =
+total.toFixed(3) + " ر.ع";
+}
+
+
+function completeDemoOrder(){
+
+const cart = getCart();
+
+if(cart.length === 0) return;
+
+const demoOrder = {
+orderNumber:
+"HW-" + Date.now().toString().slice(-6),
+
+total:
+cart.reduce(
+(sum,item)=>
+sum +
+Number(item.price) *
+(item.quantity || 1),
+0
+)
+};
+
+localStorage.setItem(
+"hikayaLastOrder",
+JSON.stringify(demoOrder)
+);
+
+window.location.href = "success.html";
+}
+
+
+render();
+
+</script>
+
+</body>
+</html>
