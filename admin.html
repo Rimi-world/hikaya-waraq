@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لوحة الإدارة | حكاية وورق</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--pink:#ea929d;
+--pink-dark:#c96f7c;
+--cream:#fffaf1;
+--yellow:#f4d68b;
+--blue:#b8d9e6;
+--lavender:#d9cce4;
+--mint:#d8e7d6;
+--ink:#584348;
+--soft:#8c7479;
+--line:#eee1df;
+--white:#fff;
+--shadow:0 18px 45px rgba(88,67,72,.08);
+}
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+font-family:"Tajawal",sans-serif;
+background:#fffaf6;
+color:var(--ink);
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+button{
+font-family:inherit;
+cursor:pointer;
+}
+
+.layout{
+min-height:100vh;
+display:grid;
+grid-template-columns:235px 1fr;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+background:var(--ink);
+color:white;
+padding:28px 18px;
+display:flex;
+flex-direction:column;
+}
+
+.brand{
+padding:4px 10px 30px;
+}
+
+.brand-ar{
+display:block;
+font-size:23px;
+font-weight:900;
+}
+
+.brand-en{
+display:block;
+direction:ltr;
+font-size:6px;
+letter-spacing:3px;
+color:#e8d7d9;
+margin-top:4px;
+}
+
+.admin-label{
+display:inline-block;
+margin-top:12px;
+padding:5px 9px;
+border-radius:100px;
+background:rgba(255,255,255,.1);
+font-size:7px;
+letter-spacing:1px;
+}
+
+.menu{
+display:flex;
+flex-direction:column;
+gap:7px;
+}
+
+.menu button,
+.menu a{
+width:100%;
+border:0;
+background:transparent;
+color:#eadfe1;
+text-align:right;
+padding:13px 14px;
+border-radius:13px;
+font-size:10px;
+font-weight:700;
+}
+
+.menu button.active{
+background:var(--pink);
+color:white;
+}
+
+.menu button:hover,
+.menu a:hover{
+background:rgba(255,255,255,.08);
+}
+
+.sidebar-bottom{
+margin-top:auto;
+padding-top:30px;
+}
+
+.demo-note{
+background:rgba(255,255,255,.07);
+padding:13px;
+border-radius:14px;
+font-size:8px;
+line-height:1.8;
+color:#dfcfd2;
+}
+
+/* MAIN */
+
+.main{
+padding:32px;
+overflow:hidden;
+}
+
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
+margin-bottom:30px;
+}
+
+.topbar small{
+display:block;
+direction:ltr;
+color:var(--pink-dark);
+font-size:7px;
+letter-spacing:3px;
+font-weight:900;
+margin-bottom:5px;
+}
+
+.topbar h1{
+font-size:30px;
+}
+
+.view-store{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+background:white;
+border:1px solid var(--line);
+border-radius:100px;
+padding:11px 17px;
+font-size:9px;
+font-weight:800;
+}
+
+/* SECTIONS */
+
+.panel{
+display:none;
+}
+
+.panel.active{
+display:block;
+}
+
+/* STATS */
+
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:13px;
+margin-bottom:25px;
+}
+
+.stat{
+background:white;
+border:1px solid var(--line);
+border-radius:22px;
+padding:20px;
+min-height:125px;
+}
+
+.stat:nth-child(1){background:#f9dfe2}
+.stat:nth-child(2){background:#f9edc9}
+.stat:nth-child(3){background:#dceef3}
+.stat:nth-child(4){background:#e8dff0}
+
+.stat small{
+font-size:8px;
+color:var(--soft);
+font-weight:800;
+}
+
+.stat strong{
+display:block;
+font-size:27px;
+margin-top:13px;
+}
+
+.stat span{
+display:block;
+font-size:8px;
+color:var(--soft);
+margin-top:3px;
+}
+
+/* CARDS */
+
+.grid{
+display:grid;
+grid-template-columns:1.25fr .75fr;
+gap:18px;
+}
+
+.card{
+background:white;
+border:1px solid var(--line);
+border-radius:24px;
+padding:22px;
+box-shadow:var(--shadow);
+}
+
+.card-head{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:19px;
+}
+
+.card-head h2{
+font-size:16px;
+}
+
+.card-head span{
+font-size:8px;
+color:var(--soft);
+}
+
+/* PRODUCTS */
+
+.product-list{
+display:flex;
+flex-direction:column;
+}
+
+.product-row{
+display:grid;
+grid-template-columns:48px 1fr auto auto;
+gap:12px;
+align-items:center;
+padding:11px 0;
+border-bottom:1px solid #f2e9e7;
+}
+
+.product-row:last-child{
+border-bottom:0;
+}
+
+.product-art{
+width:48px;
+height:52px;
+border-radius:12px;
+display:grid;
+place-items:center;
+}
+
+.mini-book{
+width:23px;
+height:32px;
+border-radius:3px 7px 7px 3px;
+border:2px solid rgba(255,255,255,.7);
+}
+
+.product-name{
+font-size:9px;
+font-weight:800;
+}
+
+.product-type{
+color:var(--soft);
+font-size:7px;
+margin-top:3px;
+}
+
+.price{
+font-size:9px;
+font-weight:900;
+white-space:nowrap;
+}
+
+.stock{
+font-size:7px;
+padding:6px 9px;
+border-radius:100px;
+background:#e6f0e3;
+color:#60755b;
+white-space:nowrap;
+}
+
+/* ACTIVITY */
+
+.activity{
+display:flex;
+flex-direction:column;
+gap:14px;
+}
+
+.activity-item{
+display:flex;
+gap:11px;
+align-items:flex-start;
+}
+
+.activity-dot{
+width:10px;
+height:10px;
+flex:0 0 10px;
+margin-top:3px;
+border-radius:50%;
+background:var(--pink);
+}
+
+.activity-item strong{
+display:block;
+font-size:9px;
+}
+
+.activity-item span{
+display:block;
+margin-top:3px;
+color:var(--soft);
+font-size:7px;
+line-height:1.6;
+}
+
+/* TABLE */
+
+.table-card{
+background:white;
+border:1px solid var(--line);
+border-radius:24px;
+padding:22px;
+overflow:auto;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+min-width:680px;
+}
+
+th{
+text-align:right;
+color:var(--soft);
+font-size:8px;
+padding:12px;
+border-bottom:1px solid var(--line);
+}
+
+td{
+padding:14px 12px;
+border-bottom:1px solid #f4ecea;
+font-size:9px;
+}
+
+.order-id{
+direction:ltr;
+text-align:right;
+font-weight:900;
+}
+
+.status{
+display:inline-block;
+padding:6px 10px;
+border-radius:100px;
+background:#f9dfe2;
+color:var(--pink-dark);
+font-size:7px;
+font-weight:900;
+}
+
+/* CATALOG */
+
+.catalog{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:13px;
+}
+
+.catalog-item{
+background:white;
+border:1px solid var(--line);
+border-radius:20px;
+overflow:hidden;
+}
+
+.catalog-art{
+height:130px;
+display:grid;
+place-items:center;
+}
+
+.catalog-book{
+width:58px;
+height:78px;
+border:4px solid rgba(255,255,255,.7);
+border-radius:5px 13px 13px 5px;
+transform:rotate(-5deg);
+}
+
+.catalog-info{
+padding:13px;
+}
+
+.catalog-info small{
+color:var(--pink-dark);
+font-size:7px;
+font-weight:900;
+}
+
+.catalog-info h3{
+font-size:10px;
+margin:4px 0 10px;
+}
+
+.catalog-bottom{
+display:flex;
+justify-content:space-between;
+font-size:8px;
+}
+
+/* RESPONSIVE */
+
+.mobile-menu{
+display:none;
+}
+
+@media(max-width:1000px){
+.stats{grid-template-columns:1fr 1fr}
+.catalog{grid-template-columns:repeat(3,1fr)}
+.grid{grid-template-columns:1fr}
+}
+
+@media(max-width:760px){
+
+.layout{
+display:block;
+}
+
+.sidebar{
+padding:15px;
+display:block;
+}
+
+.brand{
+padding:3px 5px 14px;
+text-align:center;
+}
+
+.menu{
+flex-direction:row;
+overflow-x:auto;
+padding-bottom:3px;
+}
+
+.menu button,
+.menu a{
+width:auto;
+white-space:nowrap;
+padding:10px 13px;
+}
+
+.sidebar-bottom{
+display:none;
+}
+
+.main{
+padding:20px 13px 50px;
+}
+
+.topbar h1{
+font-size:24px;
+}
+
+.view-store{
+padding:9px 12px;
+font-size:8px;
+}
+
+.catalog{
+grid-template-columns:1fr 1fr;
+}
+}
+
+@media(max-width:450px){
+.stats{grid-template-columns:1fr 1fr;gap:8px}
+.stat{padding:15px;min-height:110px}
+.stat strong{font-size:22px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="layout">
+
+<aside class="sidebar">
+
+<div class="brand">
+<span class="brand-ar">حكاية وورق</span>
+<span class="brand-en">HIKAYA & WARAQ</span>
+<span class="admin-label">DEMO ADMIN</span>
+</div>
+
+<nav class="menu">
+
+<button
+class="active"
+onclick="showPanel('dashboard',this)"
+>
+نظرة عامة
+</button>
+
+<button
+onclick="showPanel('products',this)"
+>
+المنتجات
+</button>
+
+<button
+onclick="showPanel('orders',this)"
+>
+الطلبات
+</button>
+
+<a href="index.html">
+واجهة المتجر
+</a>
+
+</nav>
+
+<div class="sidebar-bottom">
+<div class="demo-note">
+لوحة تجريبية لأغراض عرض تصميم المشروع.
+لا توجد قاعدة بيانات أو صلاحيات إدارة حقيقية.
+</div>
+</div>
+
+</aside>
+
+
+<main class="main">
+
+<div class="topbar">
+
+<div>
+<small>STORE DASHBOARD</small>
+<h1 id="pageTitle">أهلًا في لوحة حكاية وورق</h1>
+</div>
+
+<a href="index.html" class="view-store">
+مشاهدة المتجر
+</a>
+
+</div>
+
+
+<!-- DASHBOARD -->
+
+<section class="panel active" id="dashboard">
+
+<div class="stats">
+
+<div class="stat">
+<small>المنتجات</small>
+<strong>16</strong>
+<span>منتج في المتجر</span>
+</div>
+
+<div class="stat">
+<small>الطلبات التجريبية</small>
+<strong id="orderCount">0</strong>
+<span>على هذا الجهاز</span>
+</div>
+
+<div class="stat">
+<small>الأقسام</small>
+<strong>6</strong>
+<span>قصص، تعليم، فن والمزيد</span>
+</div>
+
+<div class="stat">
+<small>حالة المتجر</small>
+<strong style="font-size:20px">جاهز</strong>
+<span>نموذج العرض يعمل</span>
+</div>
+
+</div>
+
+
+<div class="grid">
+
+<div class="card">
+
+<div class="card-head">
+<h2>منتجات مختارة</h2>
+<span>من الكتالوج</span>
+</div>
+
+<div class="product-list" id="featuredProducts"></div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-head">
+<h2>نشاط المتجر</h2>
+<span>DEMO</span>
+</div>
+
+<div class="activity">
+
+<div class="activity-item">
+<div class="activity-dot"></div>
+<div>
+<strong>المتجر جاهز للعرض</strong>
+<span>تم ربط صفحات تجربة التسوق الأساسية.</span>
+</div>
+</div>
+
+<div class="activity-item">
+<div class="activity-dot"></div>
+<div>
+<strong>16 منتجًا في الكتالوج</strong>
+<span>قصص وكتب وقرطاسية وهدايا للصغار.</span>
+</div>
+</div>
+
+<div class="activity-item">
+<div class="activity-dot"></div>
+<div>
+<strong>الدفع بوضع العرض</strong>
+<span>لا يتم تنفيذ أي عملية مالية حقيقية.</span>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PRODUCTS -->
+
+<section class="panel" id="products">
+
+<div class="card-head">
+<h2>كتالوج المنتجات</h2>
+<span>16 منتجًا</span>
+</div>
+
+<div class="catalog" id="catalog"></div>
+
+</section>
+
+
+<!-- ORDERS -->
+
+<section class="panel" id="orders">
+
+<div class="table-card">
+
+<div class="card-head">
+<h2>الطلبات التجريبية</h2>
+<span>عرض محلي</span>
+</div>
+
+<table>
+
+<thead>
+<tr>
+<th>رقم الطلب</th>
+<th>الحالة</th>
+<th>الإجمالي</th>
+<th>النوع</th>
+</tr>
+</thead>
+
+<tbody id="ordersBody"></tbody>
+
+</table>
+
+<div
+id="noOrders"
+style="
+display:none;
+text-align:center;
+padding:35px 15px;
+color:#8c7479;
+font-size:10px;
+"
+>
+لا يوجد طلب تجريبي محفوظ على هذا الجهاز حتى الآن.
+</div>
+
+</div>
+
+</section>
+
+</main>
+</div>
+
+
+<script>
+
+const products = [
+{id:"moon-story",name:"حكايات تحت ضوء القمر",type:"قصص أطفال",price:4.900,color:"#dd8492"},
+{id:"little-adventures",name:"مغامرات صغيرة",type:"قصص أطفال",price:4.500,color:"#9bc9d6"},
+{id:"first-words",name:"كلماتي الأولى",type:"كتاب تعليمي",price:3.800,color:"#e5a8a2"},
+{id:"letters-book",name:"ألعب مع الحروف",type:"كتاب تعليمي",price:3.600,color:"#8ebdcc"},
+{id:"numbers-book",name:"رحلتي مع الأرقام",type:"كتاب تعليمي",price:3.900,color:"#bfa8d1"},
+{id:"coloring-dreams",name:"كتاب ألوّن أحلامي",type:"تلوين وأنشطة",price:2.900,color:"#dc8f9a"},
+{id:"activity-book",name:"كتاب يومي الممتع",type:"أنشطة",price:3.300,color:"#a4cbd7"},
+{id:"pastel-pencils",name:"ألوان باستيل الصغيرة",type:"رسم وتلوين",price:3.500,color:"#eecb67"},
+{id:"story-notebook",name:"دفتر حكاياتي",type:"دفاتر",price:2.300,color:"#efb8c0"},
+{id:"dream-notebook",name:"دفتر أحلام صغيرة",type:"دفاتر",price:2.500,color:"#acd4df"},
+{id:"lavender-case",name:"مقلمة لافندر",type:"مقالم",price:3.200,color:"#b9a2cc"},
+{id:"pink-case",name:"مقلمة وردية",type:"مقالم",price:3.200,color:"#eaa2ac"},
+{id:"stickers",name:"ملصقات حكاية",type:"ملصقات",price:1.500,color:"#f2d77e"},
+{id:"school-kit",name:"مجموعة بداية المدرسة",type:"للمدرسة",price:6.900,color:"#9bcbd7"},
+{id:"little-gift",name:"بوكس قارئ صغير",type:"هدايا",price:8.900,color:"#efb9c0"},
+{id:"creative-box",name:"بوكس الإبداع",type:"هدايا",price:9.500,color:"#a9d4df"}
+];
+
+
+function showPanel(id,button){
+
+document.querySelectorAll(".panel")
+.forEach(panel=>panel.classList.remove("active"));
+
+document.getElementById(id)
+.classList.add("active");
+
+document.querySelectorAll(".menu button")
+.forEach(btn=>btn.classList.remove("active"));
+
+if(button){
+button.classList.add("active");
+}
+
+const titles = {
+dashboard:"أهلًا في لوحة حكاية وورق",
+products:"إدارة المنتجات",
+orders:"الطلبات التجريبية"
+};
+
+document.getElementById("pageTitle").textContent =
+titles[id] || "حكاية وورق";
+}
+
+
+function renderFeatured(){
+
+const container =
+document.getElementById("featuredProducts");
+
+products.slice(0,5).forEach(product=>{
+
+const row =
+document.createElement("div");
+
+row.className = "product-row";
+
+row.innerHTML = `
+<div
+class="product-art"
+style="background:${product.color}22"
+>
+<div
+class="mini-book"
+style="background:${product.color}"
+></div>
+</div>
+
+<div>
+<div class="product-name">
+${product.name}
+</div>
+
+<div class="product-type">
+${product.type}
+</div>
+</div>
+
+<div class="price">
+${product.price.toFixed(3)} ر.ع
+</div>
+
+<div class="stock">
+متوفر
+</div>
+`;
+
+container.appendChild(row);
+
+});
+
+}
+
+
+function renderCatalog(){
+
+const container =
+document.getElementById("catalog");
+
+products.forEach(product=>{
+
+const card =
+document.createElement("article");
+
+card.className = "catalog-item";
+
+card.innerHTML = `
+<div
+class="catalog-art"
+style="background:${product.color}22"
+>
+<div
+class="catalog-book"
+style="background:${product.color}"
+></div>
+</div>
+
+<div class="catalog-info">
+
+<small>
+${product.type}
+</small>
+
+<h3>
+${product.name}
+</h3>
+
+<div class="catalog-bottom">
+
+<strong>
+${product.price.toFixed(3)} ر.ع
+</strong>
+
+<span>
+متوفر
+</span>
+
+</div>
+
+</div>
+`;
+
+container.appendChild(card);
+
+});
+
+}
+
+
+function renderOrders(){
+
+const order = JSON.parse(
+localStorage.getItem("hikayaLastOrder") || "null"
+);
+
+const body =
+document.getElementById("ordersBody");
+
+const empty =
+document.getElementById("noOrders");
+
+if(!order){
+
+empty.style.display = "block";
+
+document.getElementById("orderCount")
+.textContent = "0";
+
+return;
+}
+
+empty.style.display = "none";
+
+document.getElementById("orderCount")
+.textContent = "1";
+
+body.innerHTML = `
+<tr>
+
+<td class="order-id">
+${order.orderNumber || "HW-000000"}
+</td>
+
+<td>
+<span class="status">
+تم التأكيد
+</span>
+</td>
+
+<td>
+${Number(order.total || 0).toFixed(3)} ر.ع
+</td>
+
+<td>
+طلب تجريبي
+</td>
+
+</tr>
+`;
+
+}
+
+
+renderFeatured();
+renderCatalog();
+renderOrders();
+
+</script>
+
+</body>
+</html>
