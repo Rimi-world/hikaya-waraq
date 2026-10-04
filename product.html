@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>تفاصيل المنتج | حكاية وورق</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--pink:#ea929d;
+--pink-dark:#c96f7c;
+--pink-light:#f8d4d8;
+--cream:#fffaf1;
+--paper:#fffdf8;
+--yellow:#f4d68b;
+--blue:#b8d9e6;
+--lavender:#d9cce4;
+--mint:#d8e7d6;
+--ink:#584348;
+--soft:#8c7479;
+--line:#eee1df;
+--white:#fff;
+--shadow:0 22px 55px rgba(105,72,80,.10);
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:"Tajawal",sans-serif;
+background:var(--cream);
+color:var(--ink);
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+button{
+font-family:inherit;
+cursor:pointer;
+}
+
+/* HEADER */
+
+.announcement{
+background:var(--pink);
+color:white;
+text-align:center;
+padding:9px 15px;
+font-size:11px;
+font-weight:700;
+}
+
+header{
+position:sticky;
+top:0;
+z-index:100;
+background:rgba(255,250,241,.95);
+backdrop-filter:blur(18px);
+border-bottom:1px solid rgba(88,67,72,.08);
+}
+
+.nav{
+max-width:1240px;
+margin:auto;
+min-height:78px;
+padding:0 22px;
+display:grid;
+grid-template-columns:1fr auto 1fr;
+align-items:center;
+gap:20px;
+}
+
+.nav-links{
+display:flex;
+align-items:center;
+gap:22px;
+font-size:12px;
+font-weight:800;
+}
+
+.nav-links a:hover{
+color:var(--pink-dark);
+}
+
+.brand{
+text-align:center;
+font-weight:900;
+}
+
+.brand-ar{
+display:block;
+color:var(--pink-dark);
+font-size:23px;
+}
+
+.brand-en{
+display:block;
+direction:ltr;
+margin-top:3px;
+font-size:6px;
+letter-spacing:3px;
+color:#9a8085;
+}
+
+.actions{
+display:flex;
+direction:ltr;
+gap:8px;
+}
+
+.icon-btn{
+width:40px;
+height:40px;
+border-radius:50%;
+border:1px solid var(--line);
+background:white;
+display:grid;
+place-items:center;
+position:relative;
+}
+
+.icon-btn svg{
+width:18px;
+height:18px;
+fill:none;
+stroke:currentColor;
+stroke-width:1.8;
+stroke-linecap:round;
+stroke-linejoin:round;
+}
+
+.count{
+position:absolute;
+top:-4px;
+right:-3px;
+width:17px;
+height:17px;
+border-radius:50%;
+background:var(--pink-dark);
+color:white;
+display:grid;
+place-items:center;
+font-size:8px;
+font-weight:900;
+}
+
+.menu-btn{
+display:none;
+}
+
+/* BREADCRUMB */
+
+.breadcrumb{
+max-width:1200px;
+margin:auto;
+padding:25px 22px 5px;
+font-size:10px;
+color:var(--soft);
+}
+
+.breadcrumb a:hover{
+color:var(--pink-dark);
+}
+
+/* PRODUCT */
+
+.product-page{
+max-width:1200px;
+margin:auto;
+padding:28px 22px 90px;
+display:grid;
+grid-template-columns:1.05fr .95fr;
+gap:65px;
+align-items:center;
+}
+
+.visual{
+min-height:610px;
+border-radius:38px;
+background:#f8dadd;
+position:relative;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+}
+
+.visual:before{
+content:"";
+position:absolute;
+width:330px;
+height:330px;
+border-radius:50%;
+background:rgba(255,255,255,.28);
+top:-100px;
+right:-90px;
+}
+
+.visual:after{
+content:"";
+position:absolute;
+width:180px;
+height:180px;
+border-radius:50%;
+border:2px solid rgba(255,255,255,.4);
+bottom:-60px;
+left:-30px;
+}
+
+.product-art{
+position:relative;
+z-index:2;
+}
+
+.cover{
+width:245px;
+height:330px;
+border-radius:14px 31px 31px 14px;
+border:8px solid rgba(255,255,255,.55);
+box-shadow:20px 28px 45px rgba(90,55,65,.16);
+transform:rotate(-5deg);
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+padding:28px;
+text-align:center;
+}
+
+.cover strong{
+color:white;
+font-size:27px;
+line-height:1.35;
+}
+
+.cover small{
+color:rgba(255,255,255,.8);
+margin-top:14px;
+font-size:10px;
+letter-spacing:1px;
+}
+
+.moon{
+width:100px;
+height:100px;
+border-radius:50%;
+background:#f5d77e;
+margin-bottom:25px;
+position:relative;
+}
+
+.moon:after{
+content:"";
+position:absolute;
+width:82px;
+height:82px;
+border-radius:50%;
+background:#dd8492;
+right:-15px;
+top:-12px;
+}
+
+.sun{
+width:90px;
+height:90px;
+border-radius:50%;
+background:#f1ce68;
+margin-bottom:25px;
+box-shadow:
+0 -20px 0 -14px #f1ce68,
+0 20px 0 -14px #f1ce68,
+20px 0 0 -14px #f1ce68,
+-20px 0 0 -14px #f1ce68;
+}
+
+.cloud{
+width:130px;
+height:55px;
+background:white;
+border-radius:60px;
+margin-bottom:30px;
+position:relative;
+}
+
+.cloud:before,
+.cloud:after{
+content:"";
+position:absolute;
+border-radius:50%;
+background:white;
+}
+
+.cloud:before{
+width:68px;
+height:68px;
+right:18px;
+bottom:14px;
+}
+
+.cloud:after{
+width:48px;
+height:48px;
+left:16px;
+bottom:10px;
+}
+
+.rainbow{
+width:135px;
+height:72px;
+border:19px solid #e78c98;
+border-bottom:0;
+border-radius:130px 130px 0 0;
+margin-bottom:28px;
+position:relative;
+}
+
+.rainbow:before{
+content:"";
+position:absolute;
+inset:11px;
+border:13px solid #f2d273;
+border-bottom:0;
+border-radius:100px 100px 0 0;
+}
+
+/* PENCILS */
+
+.pencils{
+display:flex;
+align-items:flex-end;
+gap:12px;
+transform:rotate(-5deg);
+}
+
+.pencil{
+width:36px;
+height:235px;
+border-radius:14px 14px 7px 7px;
+position:relative;
+box-shadow:6px 10px 18px rgba(80,60,65,.09);
+}
+
+.pencil:before{
+content:"";
+position:absolute;
+top:-31px;
+left:0;
+border-left:18px solid transparent;
+border-right:18px solid transparent;
+border-bottom:34px solid #f2dcb9;
+}
+
+.pencil:nth-child(1){background:#df8491;height:220px}
+.pencil:nth-child(2){background:#eecb67;height:260px}
+.pencil:nth-child(3){background:#8dbfce;height:235px}
+.pencil:nth-child(4){background:#bba5ce;height:270px}
+.pencil:nth-child(5){background:#a4c9a9;height:210px}
+
+/* NOTEBOOK */
+
+.notebook{
+width:240px;
+height:315px;
+border-radius:18px;
+box-shadow:18px 25px 40px rgba(70,55,60,.14);
+transform:rotate(5deg);
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+position:relative;
+}
+
+.notebook:before{
+content:"";
+position:absolute;
+right:27px;
+top:0;
+bottom:0;
+width:10px;
+background:rgba(255,255,255,.55);
+}
+
+.star{
+width:85px;
+height:85px;
+background:#f5d475;
+clip-path:polygon(
+50% 0%,61% 34%,98% 35%,68% 57%,
+79% 91%,50% 70%,21% 91%,32% 57%,
+2% 35%,39% 34%
+);
+margin-bottom:22px;
+}
+
+.notebook strong{
+font-size:23px;
+}
+
+/* CASE */
+
+.case{
+width:300px;
+height:165px;
+border-radius:90px 90px 42px 42px;
+position:relative;
+box-shadow:18px 24px 35px rgba(70,55,75,.13);
+}
+
+.case:before{
+content:"";
+position:absolute;
+top:30px;
+left:45px;
+width:210px;
+height:11px;
+border-radius:20px;
+background:#fff7f0;
+}
+
+.case:after{
+content:"";
+position:absolute;
+width:70px;
+height:35px;
+border-bottom:4px solid #715d72;
+border-radius:50%;
+bottom:35px;
+left:115px;
+}
+
+/* STICKERS */
+
+.stickers{
+width:290px;
+height:290px;
+position:relative;
+}
+
+.sticker{
+position:absolute;
+display:grid;
+place-items:center;
+box-shadow:0 12px 25px rgba(70,50,55,.1);
+}
+
+.sticker:nth-child(1){
+width:115px;
+height:115px;
+border-radius:50%;
+background:#f2c7cc;
+top:25px;
+left:20px;
+}
+
+.sticker:nth-child(1):after{
+content:"♡";
+color:white;
+font-size:50px;
+}
+
+.sticker:nth-child(2){
+width:125px;
+height:125px;
+border-radius:30px;
+background:#f2d77e;
+right:20px;
+top:65px;
+transform:rotate(12deg);
+}
+
+.sticker:nth-child(2):after{
+content:"✦";
+color:white;
+font-size:45px;
+}
+
+.sticker:nth-child(3){
+width:130px;
+height:90px;
+border-radius:70px;
+background:#b9dce5;
+left:80px;
+bottom:15px;
+transform:rotate(-8deg);
+}
+
+.sticker:nth-child(3):after{
+content:"HI";
+color:white;
+font-size:27px;
+font-weight:900;
+}
+
+/* GIFT */
+
+.gift{
+width:270px;
+height:215px;
+border-radius:25px;
+position:relative;
+box-shadow:18px 25px 40px rgba(70,55,60,.12);
+}
+
+.gift:before{
+content:"";
+position:absolute;
+width:40px;
+height:100%;
+background:#fff1c2;
+left:115px;
+}
+
+.gift:after{
+content:"";
+position:absolute;
+width:100%;
+height:36px;
+background:#fff1c2;
+top:88px;
+}
+
+.bow{
+position:absolute;
+width:70px;
+height:55px;
+border:13px solid #df9673;
+border-radius:50%;
+top:-38px;
+left:67px;
+}
+
+.bow:after{
+content:"";
+position:absolute;
+width:70px;
+height:55px;
+border:13px solid #df9673;
+border-radius:50%;
+left:48px;
+top:-22px;
+transform:rotate(-45deg);
+}
+
+/* DETAILS */
+
+.details{
+padding:15px 0;
+}
+
+.type{
+display:inline-block;
+color:var(--pink-dark);
+font-size:10px;
+font-weight:900;
+margin-bottom:12px;
+}
+
+.details h1{
+font-size:clamp(34px,5vw,53px);
+line-height:1.25;
+font-weight:900;
+letter-spacing:-1px;
+}
+
+.price{
+font-size:24px;
+font-weight:900;
+color:var(--pink-dark);
+margin:16px 0;
+}
+
+.description{
+color:var(--soft);
+line-height:2;
+font-size:13px;
+max-width:510px;
+}
+
+.divider{
+height:1px;
+background:var(--line);
+margin:27px 0;
+}
+
+.info-row{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.info-card{
+background:white;
+border:1px solid var(--line);
+border-radius:17px;
+padding:13px 17px;
+min-width:125px;
+}
+
+.info-card span{
+display:block;
+font-size:8px;
+color:var(--soft);
+margin-bottom:4px;
+}
+
+.info-card strong{
+font-size:11px;
+}
+
+.quantity-title{
+font-size:11px;
+font-weight:900;
+margin-bottom:10px;
+}
+
+.quantity{
+display:inline-flex;
+align-items:center;
+border:1px solid var(--line);
+background:white;
+border-radius:100px;
+overflow:hidden;
+}
+
+.quantity button{
+width:43px;
+height:43px;
+border:0;
+background:white;
+color:var(--ink);
+font-size:20px;
+}
+
+.quantity span{
+min-width:35px;
+text-align:center;
+font-size:12px;
+font-weight:900;
+}
+
+.buy-actions{
+display:grid;
+grid-template-columns:1fr 52px;
+gap:9px;
+margin-top:22px;
+}
+
+.add-cart{
+border:0;
+min-height:53px;
+border-radius:100px;
+background:var(--ink);
+color:white;
+font-size:12px;
+font-weight:900;
+transition:.25s;
+}
+
+.add-cart:hover{
+transform:translateY(-2px);
+}
+
+.fav{
+width:52px;
+height:52px;
+border-radius:50%;
+border:1px solid var(--line);
+background:white;
+display:grid;
+place-items:center;
+}
+
+.fav svg{
+width:20px;
+fill:none;
+stroke:var(--pink-dark);
+stroke-width:1.8;
+}
+
+.note{
+margin-top:15px;
+padding:14px 17px;
+background:#fff3d5;
+border-radius:16px;
+color:#806d54;
+font-size:9px;
+line-height:1.8;
+}
+
+/* RELATED */
+
+.related{
+max-width:1200px;
+margin:auto;
+padding:10px 22px 90px;
+}
+
+.related-head{
+margin-bottom:23px;
+}
+
+.related-head span{
+color:var(--pink-dark);
+font-size:9px;
+letter-spacing:2px;
+font-weight:900;
+}
+
+.related-head h2{
+font-size:30px;
+margin-top:5px;
+}
+
+.related-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+}
+
+.related-card{
+background:white;
+border:1px solid var(--line);
+border-radius:24px;
+padding:12px;
+display:flex;
+align-items:center;
+gap:15px;
+transition:.25s;
+}
+
+.related-card:hover{
+transform:translateY(-4px);
+box-shadow:var(--shadow);
+}
+
+.related-art{
+width:95px;
+height:105px;
+border-radius:17px;
+flex:none;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.mini-book{
+width:50px;
+height:68px;
+border-radius:4px 9px 9px 4px;
+border:3px solid rgba(255,255,255,.7);
+}
+
+.related-info small{
+color:var(--pink-dark);
+font-size:8px;
+font-weight:800;
+}
+
+.related-info h3{
+font-size:12px;
+margin:5px 0;
+}
+
+.related-info strong{
+font-size:10px;
+}
+
+/* FOOTER */
+
+footer{
+background:var(--pink);
+color:white;
+}
+
+.footer{
+max-width:1200px;
+margin:auto;
+padding:48px 22px;
+display:grid;
+grid-template-columns:1.5fr 1fr 1fr;
+gap:40px;
+}
+
+.footer-logo{
+font-size:25px;
+font-weight:900;
+}
+
+.footer p{
+max-width:320px;
+font-size:10px;
+line-height:2;
+color:#fff0ef;
+margin-top:8px;
+}
+
+.footer h4{
+font-size:12px;
+margin-bottom:12px;
+}
+
+.footer a{
+display:block;
+font-size:10px;
+color:#fff0ef;
+margin:9px 0;
+}
+
+.copy{
+border-top:1px solid rgba(255,255,255,.2);
+text-align:center;
+padding:17px;
+font-size:9px;
+direction:ltr;
+}
+
+/* TOAST */
+
+.toast{
+position:fixed;
+left:50%;
+bottom:25px;
+z-index:999;
+transform:translate(-50%,100px);
+opacity:0;
+background:var(--ink);
+color:white;
+padding:12px 20px;
+border-radius:100px;
+font-size:10px;
+transition:.3s;
+}
+
+.toast.show{
+opacity:1;
+transform:translate(-50%,0);
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.nav-links{
+display:none;
+}
+
+.menu-btn{
+display:grid;
+}
+
+.nav{
+grid-template-columns:auto 1fr auto;
+}
+
+.brand{
+justify-self:center;
+}
+
+.product-page{
+grid-template-columns:1fr;
+gap:35px;
+}
+
+.visual{
+min-height:520px;
+}
+
+.related-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:650px){
+
+.announcement{
+font-size:9px;
+}
+
+.nav{
+min-height:68px;
+padding:0 13px;
+}
+
+.brand-ar{
+font-size:18px;
+}
+
+.brand-en{
+font-size:5px;
+}
+
+.icon-btn{
+width:37px;
+height:37px;
+}
+
+.actions .hide-mobile{
+display:none;
+}
+
+.breadcrumb{
+padding:18px 14px 0;
+}
+
+.product-page{
+padding:18px 14px 65px;
+}
+
+.visual{
+min-height:410px;
+border-radius:28px;
+}
+
+.product-art{
+transform:scale(.75);
+}
+
+.details h1{
+font-size:34px;
+}
+
+.description{
+font-size:12px;
+}
+
+.related{
+padding:0 14px 65px;
+}
+
+.footer{
+grid-template-columns:1fr;
+gap:25px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="announcement">
+كتب وقصص وقرطاسية اختيرت لعالمهم الصغير
+</div>
+
+<header>
+
+<nav class="nav">
+
+<div class="nav-links">
+<a href="index.html">الرئيسية</a>
+<a href="shop.html">المتجر</a>
+<a href="shop.html?category=stories">القصص</a>
+<a href="shop.html?category=learning">التعلّم</a>
+<a href="shop.html?category=stationery">القرطاسية</a>
+</div>
+
+<button class="icon-btn menu-btn">
+<svg viewBox="0 0 24 24">
+<path d="M4 7h16M4 12h16M4 17h16"/>
+</svg>
+</button>
+
+<a class="brand" href="index.html">
+<span class="brand-ar">حكاية وورق</span>
+<span class="brand-en">HIKAYA & WARAQ</span>
+</a>
+
+<div class="actions">
+
+<a href="shop.html" class="icon-btn hide-mobile">
+<svg viewBox="0 0 24 24">
+<circle cx="11" cy="11" r="6"/>
+<path d="m16 16 4 4"/>
+</svg>
+</a>
+
+<a href="favorites.html" class="icon-btn">
+<svg viewBox="0 0 24 24">
+<path d="M20.8 4.6a5.4 5.4 0 0 0-7.6 0L12 5.8l-1.2-1.2a5.4 5.4 0 0 0-7.6 7.6L12 21l8.8-8.8a5.4 5.4 0 0 0 0-7.6Z"/>
+</svg>
+<span class="count" id="favCount">0</span>
+</a>
+
+<a href="cart.html" class="icon-btn">
+<svg viewBox="0 0 24 24">
+<path d="M6 8h12l1 12H5L6 8Z"/>
+<path d="M9 9V6a3 3 0 0 1 6 0v3"/>
+</svg>
+<span class="count" id="cartCount">0</span>
+</a>
+
+</div>
+
+</nav>
+
+</header>
+
+
+<div class="breadcrumb">
+<a href="index.html">الرئيسية</a>
+&nbsp; / &nbsp;
+<a href="shop.html">المتجر</a>
+&nbsp; / &nbsp;
+<span id="crumbName">المنتج</span>
+</div>
+
+
+<main>
+
+<section class="product-page">
+
+<div class="visual" id="visual">
+<div class="product-art" id="productArt"></div>
+</div>
+
+
+<div class="details">
+
+<span class="type" id="productType">
+قصص أطفال
+</span>
+
+<h1 id="productName">
+حكايات تحت ضوء القمر
+</h1>
+
+<div class="price" id="productPrice">
+4.900 ر.ع
+</div>
+
+<p class="description" id="productDescription">
+حكايات هادئة ولطيفة لوقت القراءة قبل النوم.
+</p>
+
+<div class="divider"></div>
+
+<div class="info-row">
+
+<div class="info-card">
+<span>العمر المناسب</span>
+<strong id="productAge">4–9 سنوات</strong>
+</div>
+
+<div class="info-card">
+<span>التصنيف</span>
+<strong id="productCategory">قصص وحكايات</strong>
+</div>
+
+<div class="info-card">
+<span>التوفر</span>
+<strong>متوفر</strong>
+</div>
+
+</div>
+
+<div class="divider"></div>
+
+<div class="quantity-title">
+الكمية
+</div>
+
+<div class="quantity">
+
+<button onclick="changeQuantity(-1)">−</button>
+
+<span id="quantity">1</span>
+
+<button onclick="changeQuantity(1)">+</button>
+
+</div>
+
+
+<div class="buy-actions">
+
+<button
+class="add-cart"
+onclick="addToCart()"
+>
+أضف إلى السلة
+</button>
+
+<button
+class="fav"
+id="favoriteButton"
+onclick="toggleFavorite()"
+aria-label="إضافة للمفضلة"
+>
+<svg viewBox="0 0 24 24" id="favoriteIcon">
+<path d="M20.8 4.6a5.4 5.4 0 0 0-7.6 0L12 5.8l-1.2-1.2a5.4 5.4 0 0 0-7.6 7.6L12 21l8.8-8.8a5.4 5.4 0 0 0 0-7.6Z"/>
+</svg>
+</button>
+
+</div>
+
+<div class="note">
+اختيارات حكاية وورق صُممت كنموذج متجر تجريبي.
+الأسعار والمنتجات المعروضة لأغراض العرض فقط.
+</div>
+
+</div>
+
+</section>
+
+
+<section class="related">
+
+<div class="related-head">
+<span>YOU MAY ALSO LOVE</span>
+<h2>قد يعجبهم أيضًا</h2>
+</div>
+
+<div class="related-grid">
+
+<a
+href="product.html?id=little-adventures"
+class="related-card"
+>
+
+<div class="related-art" style="background:#d5e9ee">
+<div class="mini-book" style="background:#9bc9d6"></div>
+</div>
+
+<div class="related-info">
+<small>قصص أطفال</small>
+<h3>مغامرات صغيرة</h3>
+<strong>4.500 ر.ع</strong>
+</div>
+
+</a>
+
+
+<a
+href="product.html?id=story-notebook"
+class="related-card"
+>
+
+<div class="related-art" style="background:#f6d9dd">
+<div class="mini-book" style="background:#efb8c0"></div>
+</div>
+
+<div class="related-info">
+<small>دفاتر</small>
+<h3>دفتر حكاياتي</h3>
+<strong>2.300 ر.ع</strong>
+</div>
+
+</a>
+
+
+<a
+href="product.html?id=pastel-pencils"
+class="related-card"
+>
+
+<div class="related-art" style="background:#dcecef">
+<div class="mini-book" style="background:#f1ce68"></div>
+</div>
+
+<div class="related-info">
+<small>رسم وتلوين</small>
+<h3>ألوان باستيل الصغيرة</h3>
+<strong>3.500 ر.ع</strong>
+</div>
+
+</a>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+<div class="footer">
+
+<div>
+
+<div class="footer-logo">
+حكاية وورق
+</div>
+
+<p>
+كتب وقصص وقرطاسية اختيرت بحب
+لعالم الصغار وخيالهم الكبير.
+</p>
+
+</div>
+
+
+<div>
+
+<h4>المتجر</h4>
+
+<a href="shop.html">كل المنتجات</a>
+<a href="shop.html?category=stories">القصص</a>
+<a href="shop.html?category=learning">التعلّم</a>
+<a href="shop.html?category=stationery">القرطاسية</a>
+
+</div>
+
+
+<div>
+
+<h4>طلبكم</h4>
+
+<a href="favorites.html">المفضلة</a>
+<a href="cart.html">سلة التسوق</a>
+<a href="index.html">الرئيسية</a>
+
+</div>
+
+</div>
+
+<div class="copy">
+HIKAYA & WARAQ © 2026 · BOOKS · STORIES · STATIONERY
+</div>
+
+</footer>
+
+
+<div class="toast" id="toast"></div>
+
+
+<script>
+
+const products = {
+
+"moon-story":{
+id:"moon-story",
+name:"حكايات تحت ضوء القمر",
+type:"قصص أطفال",
+category:"قصص وحكايات",
+age:"4–9 سنوات",
+price:4.900,
+description:"مجموعة حكايات هادئة ولطيفة تأخذ الصغار إلى عالم مليء بالخيال، مناسبة لوقت القراءة الهادئ وقبل النوم.",
+art:"moon",
+color:"#dd8492",
+background:"#f8dadd"
+},
+
+"little-adventures":{
+id:"little-adventures",
+name:"مغامرات صغيرة",
+type:"قصص أطفال",
+category:"قصص وحكايات",
+age:"4–9 سنوات",
+price:4.500,
+description:"قصص قصيرة مليئة بالمغامرات والمواقف اللطيفة، لتشجيع الصغار على القراءة واكتشاف عوالم جديدة.",
+art:"rainbow",
+color:"#9bc9d6",
+background:"#dcecf0"
+},
+
+"first-words":{
+id:"first-words",
+name:"كلماتي الأولى",
+type:"كتاب تعليمي",
+category:"التعلّم",
+age:"0–6 سنوات",
+price:3.800,
+description:"كتاب تعليمي بسيط يساعد الصغار على التعرّف إلى كلماتهم الأولى بطريقة لطيفة وواضحة.",
+art:"sun",
+color:"#e5a8a2",
+background:"#f8dfdc"
+},
+
+"letters-book":{
+id:"letters-book",
+name:"ألعب مع الحروف",
+type:"كتاب تعليمي",
+category:"التعلّم",
+age:"4–6 سنوات",
+price:3.600,
+description:"أنشطة مرحة تساعد الطفل على اكتشاف الحروف والتدرّب عليها بطريقة بسيطة وممتعة.",
+art:"cloud",
+color:"#8ebdcc",
+background:"#d9ebef"
+},
+
+"numbers-book":{
+id:"numbers-book",
+name:"رحلتي مع الأرقام",
+type:"كتاب تعليمي",
+category:"التعلّم",
+age:"4–9 سنوات",
+price:3.900,
+description:"رحلة صغيرة مع الأرقام والتمارين الممتعة المصممة لدعم التعلّم بطريقة محببة.",
+art:"sun",
+color:"#bfa8d1",
+background:"#e8dff0"
+},
+
+"coloring-dreams":{
+id:"coloring-dreams",
+name:"كتاب ألوّن أحلامي",
+type:"تلوين وأنشطة",
+category:"الرسم والتلوين",
+age:"4–9 سنوات",
+price:2.900,
+description:"صفحات تلوين وأنشطة بسيطة تمنح الصغار مساحة للخيال والتجربة والإبداع.",
+art:"rainbow",
+color:"#dc8f9a",
+background:"#f7dadd"
+},
+
+"activity-book":{
+id:"activity-book",
+name:"كتاب يومي الممتع",
+type:"أنشطة",
+category:"الأنشطة",
+age:"7–9 سنوات",
+price:3.300,
+description:"ألغاز وأنشطة ورسومات متنوعة تجعل وقت الفراغ أكثر متعة وإبداعًا.",
+art:"cloud",
+color:"#a4cbd7",
+background:"#dcecef"
+},
+
+"pastel-pencils":{
+id:"pastel-pencils",
+name:"ألوان باستيل الصغيرة",
+type:"رسم وتلوين",
+category:"الألوان",
+age:"4+ سنوات",
+price:3.500,
+description:"مجموعة ألوان باستيل ناعمة للصغار، مناسبة للرسم والتلوين وصنع أفكارهم الملونة.",
+art:"pencils",
+color:"#d9ebef",
+background:"#dcecef"
+},
+
+"story-notebook":{
+id:"story-notebook",
+name:"دفتر حكاياتي",
+type:"دفاتر",
+category:"القرطاسية",
+age:"7+ سنوات",
+price:2.300,
+description:"دفتر لطيف للرسومات والأفكار والحكايات الصغيرة التي يحب الطفل الاحتفاظ بها.",
+art:"notebook",
+color:"#efb8c0",
+background:"#f8dadd"
+},
+
+"dream-notebook":{
+id:"dream-notebook",
+name:"دفتر أحلام صغيرة",
+type:"دفاتر",
+category:"القرطاسية",
+age:"7+ سنوات",
+price:2.500,
+description:"دفتر ناعم للكتابة والرسم وتسجيل الأفكار اليومية بطريقة جميلة.",
+art:"notebook",
+color:"#acd4df",
+background:"#dcecef"
+},
+
+"lavender-case":{
+id:"lavender-case",
+name:"مقلمة لافندر",
+type:"مقالم",
+category:"القرطاسية",
+age:"7+ سنوات",
+price:3.200,
+description:"مقلمة لطيفة ومرتبة للأقلام والألوان والأشياء المدرسية الصغيرة.",
+art:"case",
+color:"#b9a2cc",
+background:"#e8dff0"
+},
+
+"pink-case":{
+id:"pink-case",
+name:"مقلمة وردية",
+type:"مقالم",
+category:"القرطاسية",
+age:"4+ سنوات",
+price:3.200,
+description:"مقلمة وردية بسيطة وخفيفة تحفظ الأقلام والأدوات الصغيرة بطريقة مرتبة.",
+art:"case",
+color:"#eaa2ac",
+background:"#f8dadd"
+},
+
+"stickers":{
+id:"stickers",
+name:"ملصقات حكاية",
+type:"ملصقات",
+category:"القرطاسية",
+age:"4+ سنوات",
+price:1.500,
+description:"مجموعة ملصقات لطيفة لتزيين الدفاتر والرسومات والأغراض المدرسية.",
+art:"stickers",
+color:"#f2d77e",
+background:"#fff0c6"
+},
+
+"school-kit":{
+id:"school-kit",
+name:"مجموعة بداية المدرسة",
+type:"مستلزمات مدرسية",
+category:"للمدرسة",
+age:"7+ سنوات",
+price:6.900,
+description:"مجموعة مدرسية مختارة تجمع الأساسيات الصغيرة لبداية مرتبة وجميلة.",
+art:"notebook",
+color:"#9bcbd7",
+background:"#d8ebef"
+},
+
+"little-gift":{
+id:"little-gift",
+name:"بوكس قارئ صغير",
+type:"هدايا",
+category:"الهدايا",
+age:"4–9 سنوات",
+price:8.900,
+description:"بوكس لطيف يجمع قصة ودفترًا وألوانًا في مجموعة جميلة جاهزة للإهداء.",
+art:"gift",
+color:"#efb9c0",
+background:"#f8dadd"
+},
+
+"creative-box":{
+id:"creative-box",
+name:"بوكس الإبداع",
+type:"هدايا",
+category:"الهدايا",
+age:"7+ سنوات",
+price:9.500,
+description:"مجموعة تجمع الدفتر والألوان والملصقات لتشجيع الطفل على الرسم والكتابة والإبداع.",
+art:"gift",
+color:"#a9d4df",
+background:"#dcecef"
+}
+
+};
+
+
+let quantity = 1;
+
+const params =
+new URLSearchParams(window.location.search);
+
+const requestedId =
+params.get("id") || "moon-story";
+
+const product =
+products[requestedId] || products["moon-story"];
+
+
+function renderArt(){
+
+let html = "";
+
+if(product.art === "moon"){
+
+html = `
+<div class="cover"
+style="background:${product.color}">
+<div class="moon"></div>
+<strong>${product.name}</strong>
+<small>حكاية وورق</small>
+</div>
+`;
+
+}
+
+else if(product.art === "sun"){
+
+html = `
+<div class="cover"
+style="background:${product.color}">
+<div class="sun"></div>
+<strong>${product.name}</strong>
+<small>حكاية وورق</small>
+</div>
+`;
+
+}
+
+else if(product.art === "cloud"){
+
+html = `
+<div class="cover"
+style="background:${product.color}">
+<div class="cloud"></div>
+<strong>${product.name}</strong>
+<small>حكاية وورق</small>
+</div>
+`;
+
+}
+
+else if(product.art === "rainbow"){
+
+html = `
+<div class="cover"
+style="background:${product.color}">
+<div class="rainbow"></div>
+<strong>${product.name}</strong>
+<small>حكاية وورق</small>
+</div>
+`;
+
+}
+
+else if(product.art === "pencils"){
+
+html = `
+<div class="pencils">
+<div class="pencil"></div>
+<div class="pencil"></div>
+<div class="pencil"></div>
+<div class="pencil"></div>
+<div class="pencil"></div>
+</div>
+`;
+
+}
+
+else if(product.art === "notebook"){
+
+html = `
+<div class="notebook"
+style="background:${product.color}">
+<div class="star"></div>
+<strong>${product.name}</strong>
+</div>
+`;
+
+}
+
+else if(product.art === "case"){
+
+html = `
+<div class="case"
+style="background:${product.color}">
+</div>
+`;
+
+}
+
+else if(product.art === "stickers"){
+
+html = `
+<div class="stickers">
+<div class="sticker"></div>
+<div class="sticker"></div>
+<div class="sticker"></div>
+</div>
+`;
+
+}
+
+else if(product.art === "gift"){
+
+html = `
+<div class="gift"
+style="background:${product.color}">
+<div class="bow"></div>
+</div>
+`;
+
+}
+
+document.getElementById("productArt").innerHTML = html;
+
+}
+
+
+function renderProduct(){
+
+document.title =
+product.name + " | حكاية وورق";
+
+document.getElementById("crumbName").textContent =
+product.name;
+
+document.getElementById("productType").textContent =
+product.type;
+
+document.getElementById("productName").textContent =
+product.name;
+
+document.getElementById("productPrice").textContent =
+product.price.toFixed(3) + " ر.ع";
+
+document.getElementById("productDescription").textContent =
+product.description;
+
+document.getElementById("productAge").textContent =
+product.age;
+
+document.getElementById("productCategory").textContent =
+product.category;
+
+document.getElementById("visual").style.background =
+product.background;
+
+renderArt();
+
+}
+
+
+function changeQuantity(change){
+
+quantity += change;
+
+if(quantity < 1){
+quantity = 1;
+}
+
+if(quantity > 10){
+quantity = 10;
+}
+
+document.getElementById("quantity").textContent =
+quantity;
+
+}
+
+
+function getCart(){
+
+return JSON.parse(
+localStorage.getItem("hikayaCart") || "[]"
+);
+
+}
+
+
+function getFavorites(){
+
+return JSON.parse(
+localStorage.getItem("hikayaFavorites") || "[]"
+);
+
+}
+
+
+function addToCart(){
+
+const cart = getCart();
+
+const existing =
+cart.find(item=>item.id === product.id);
+
+if(existing){
+
+existing.quantity += quantity;
+
+}else{
+
+cart.push({
+id:product.id,
+name:product.name,
+price:product.price,
+quantity:quantity
+});
+
+}
+
+localStorage.setItem(
+"hikayaCart",
+JSON.stringify(cart)
+);
+
+updateCounts();
+
+showToast(
+"تمت إضافة " + product.name + " إلى السلة"
+);
+
+}
+
+
+function toggleFavorite(){
+
+let favorites = getFavorites();
+
+if(favorites.includes(product.id)){
+
+favorites =
+favorites.filter(id=>id !== product.id);
+
+showToast("تمت الإزالة من المفضلة");
+
+}else{
+
+favorites.push(product.id);
+
+showToast("تمت الإضافة إلى المفضلة");
+
+}
+
+localStorage.setItem(
+"hikayaFavorites",
+JSON.stringify(favorites)
+);
+
+updateFavorite();
+updateCounts();
+
+}
+
+
+function updateFavorite(){
+
+const favorites = getFavorites();
+
+document.getElementById("favoriteIcon").style.fill =
+favorites.includes(product.id)
+? "#c96f7c"
+: "none";
+
+}
+
+
+function updateCounts(){
+
+const cart = getCart();
+
+const total =
+cart.reduce(
+(sum,item)=>sum+(item.quantity || 1),
+0
+);
+
+document.getElementById("cartCount").textContent =
+total;
+
+document.getElementById("favCount").textContent =
+getFavorites().length;
+
+}
+
+
+function showToast(message){
+
+const toast =
+document.getElementById("toast");
+
+toast.textContent = message;
+
+toast.classList.add("show");
+
+clearTimeout(window.toastTimer);
+
+window.toastTimer =
+setTimeout(()=>{
+toast.classList.remove("show");
+},1800);
+
+}
+
+
+renderProduct();
+updateFavorite();
+updateCounts();
+
+</script>
+
+</body>
+</html>
