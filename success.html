@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تم تأكيد الطلب | حكاية وورق</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--pink:#ea929d;
+--pink-dark:#c96f7c;
+--cream:#fffaf1;
+--yellow:#f4d68b;
+--blue:#b8d9e6;
+--lavender:#d9cce4;
+--ink:#584348;
+--soft:#8c7479;
+--line:#eee1df;
+--white:#fff;
+}
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+font-family:"Tajawal",sans-serif;
+background:var(--cream);
+color:var(--ink);
+}
+
+a{
+color:inherit;
+text-decoration:none;
+}
+
+/* top */
+
+.announcement{
+background:var(--pink);
+color:white;
+text-align:center;
+padding:9px 15px;
+font-size:11px;
+font-weight:700;
+}
+
+header{
+border-bottom:1px solid rgba(88,67,72,.08);
+}
+
+.nav{
+max-width:1100px;
+min-height:78px;
+margin:auto;
+padding:0 22px;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.brand{
+text-align:center;
+font-weight:900;
+}
+
+.brand-ar{
+display:block;
+color:var(--pink-dark);
+font-size:23px;
+}
+
+.brand-en{
+display:block;
+direction:ltr;
+margin-top:3px;
+color:#9a8085;
+font-size:6px;
+letter-spacing:3px;
+}
+
+/* page */
+
+.page{
+max-width:760px;
+margin:65px auto 100px;
+padding:0 20px;
+text-align:center;
+}
+
+.illustration{
+width:175px;
+height:150px;
+margin:0 auto 28px;
+position:relative;
+}
+
+/* book */
+
+.book{
+position:absolute;
+width:105px;
+height:125px;
+left:35px;
+top:15px;
+background:var(--pink);
+border:6px solid white;
+border-radius:8px 23px 23px 8px;
+box-shadow:12px 15px 30px rgba(100,65,75,.12);
+transform:rotate(-5deg);
+}
+
+.book:before{
+content:"";
+position:absolute;
+width:47px;
+height:47px;
+border-radius:50%;
+background:var(--yellow);
+top:28px;
+left:23px;
+}
+
+.book:after{
+content:"";
+position:absolute;
+width:38px;
+height:5px;
+border-radius:10px;
+background:white;
+opacity:.8;
+bottom:22px;
+left:27px;
+}
+
+/* decorative shapes */
+
+.star{
+position:absolute;
+color:var(--pink-dark);
+font-size:24px;
+font-weight:900;
+}
+
+.star.one{
+right:4px;
+top:12px;
+}
+
+.star.two{
+left:3px;
+bottom:22px;
+color:#d6ae47;
+font-size:18px;
+}
+
+.spark{
+position:absolute;
+width:12px;
+height:12px;
+border-radius:50%;
+background:var(--blue);
+right:12px;
+bottom:18px;
+}
+
+.success-label{
+display:block;
+direction:ltr;
+color:var(--pink-dark);
+letter-spacing:4px;
+font-size:8px;
+font-weight:900;
+margin-bottom:8px;
+}
+
+h1{
+font-size:clamp(38px,7vw,58px);
+line-height:1.2;
+}
+
+.subtitle{
+max-width:500px;
+margin:13px auto 0;
+color:var(--soft);
+font-size:11px;
+line-height:2;
+}
+
+/* order */
+
+.order-card{
+max-width:540px;
+margin:32px auto 0;
+background:white;
+border:1px solid var(--line);
+border-radius:28px;
+padding:25px;
+text-align:right;
+}
+
+.order-top{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
+padding-bottom:18px;
+border-bottom:1px solid var(--line);
+}
+
+.order-top small{
+display:block;
+color:var(--soft);
+font-size:8px;
+margin-bottom:4px;
+}
+
+.order-number{
+direction:ltr;
+font-size:15px;
+font-weight:900;
+}
+
+.status{
+background:#f7dadd;
+color:var(--pink-dark);
+border-radius:100px;
+padding:8px 12px;
+font-size:8px;
+font-weight:900;
+}
+
+.info{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+padding:20px 0;
+}
+
+.info-box{
+background:#fffaf7;
+border-radius:16px;
+padding:13px;
+}
+
+.info-box small{
+display:block;
+color:var(--soft);
+font-size:8px;
+margin-bottom:5px;
+}
+
+.info-box strong{
+font-size:11px;
+}
+
+/* tracking */
+
+.tracking{
+border-top:1px solid var(--line);
+padding-top:22px;
+}
+
+.tracking h2{
+font-size:14px;
+margin-bottom:19px;
+}
+
+.track{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+position:relative;
+}
+
+.track:before{
+content:"";
+position:absolute;
+top:14px;
+right:16.6%;
+left:16.6%;
+height:2px;
+background:#f0d4d7;
+}
+
+.track-step{
+position:relative;
+z-index:2;
+text-align:center;
+}
+
+.dot{
+width:29px;
+height:29px;
+margin:auto;
+border-radius:50%;
+background:white;
+border:2px solid #edc7cc;
+display:grid;
+place-items:center;
+font-size:9px;
+font-weight:900;
+color:var(--pink-dark);
+}
+
+.track-step.active .dot{
+background:var(--pink-dark);
+border-color:var(--pink-dark);
+color:white;
+}
+
+.track-step strong{
+display:block;
+margin-top:8px;
+font-size:8px;
+}
+
+.track-step span{
+display:block;
+color:var(--soft);
+font-size:7px;
+margin-top:3px;
+}
+
+/* buttons */
+
+.buttons{
+margin-top:28px;
+display:flex;
+justify-content:center;
+gap:9px;
+flex-wrap:wrap;
+}
+
+.primary,
+.secondary{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+min-height:48px;
+padding:0 22px;
+border-radius:100px;
+font-size:10px;
+font-weight:900;
+}
+
+.primary{
+background:var(--ink);
+color:white;
+}
+
+.secondary{
+background:white;
+border:1px solid var(--line);
+}
+
+.demo-note{
+margin-top:25px;
+color:#9a8488;
+font-size:8px;
+line-height:1.8;
+}
+
+/* missing order */
+
+.missing{
+display:none;
+max-width:600px;
+margin:100px auto;
+padding:55px 25px;
+text-align:center;
+background:#f7dadd;
+border-radius:30px;
+}
+
+.missing h2{
+font-size:25px;
+}
+
+.missing p{
+margin:8px 0 20px;
+color:var(--soft);
+font-size:10px;
+}
+
+.missing a{
+display:inline-block;
+background:var(--ink);
+color:white;
+padding:12px 20px;
+border-radius:100px;
+font-size:10px;
+font-weight:900;
+}
+
+@media(max-width:550px){
+
+.nav{
+min-height:68px;
+}
+
+.brand-ar{
+font-size:18px;
+}
+
+.brand-en{
+font-size:5px;
+}
+
+.page{
+margin-top:45px;
+padding:0 13px;
+}
+
+.order-card{
+padding:18px;
+border-radius:22px;
+}
+
+.info{
+grid-template-columns:1fr;
+gap:8px;
+}
+
+.track-step strong{
+font-size:7px;
+}
+
+.track-step span{
+font-size:6px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="announcement">
+شكرًا لأنكم جعلتم حكايتنا جزءًا من يومكم
+</div>
+
+<header>
+<nav class="nav">
+
+<a href="index.html" class="brand">
+<span class="brand-ar">حكاية وورق</span>
+<span class="brand-en">HIKAYA & WARAQ</span>
+</a>
+
+</nav>
+</header>
+
+
+<main class="page" id="successPage">
+
+<div class="illustration">
+<div class="book"></div>
+<div class="star one">✦</div>
+<div class="star two">✦</div>
+<div class="spark"></div>
+</div>
+
+<span class="success-label">
+ORDER CONFIRMED
+</span>
+
+<h1>اكتملت الحكاية!</h1>
+
+<p class="subtitle">
+تم تأكيد طلبكم التجريبي بنجاح.
+اختيارات جميلة في طريقها لتصنع لحظات مليئة
+بالقراءة والألوان والخيال.
+</p>
+
+
+<section class="order-card">
+
+<div class="order-top">
+
+<div>
+<small>رقم الطلب</small>
+<div class="order-number" id="orderNumber">
+HW-000000
+</div>
+</div>
+
+<div class="status">
+تم التأكيد
+</div>
+
+</div>
+
+
+<div class="info">
+
+<div class="info-box">
+<small>الإجمالي</small>
+<strong id="orderTotal">
+0.000 ر.ع
+</strong>
+</div>
+
+<div class="info-box">
+<small>نوع العملية</small>
+<strong>طلب تجريبي</strong>
+</div>
+
+</div>
+
+
+<div class="tracking">
+
+<h2>حالة الطلب</h2>
+
+<div class="track">
+
+<div class="track-step active">
+<div class="dot">✓</div>
+<strong>تم الطلب</strong>
+<span>استلمنا الطلب</span>
+</div>
+
+<div class="track-step">
+<div class="dot">2</div>
+<strong>قيد التجهيز</strong>
+<span>نجهز الحكاية</span>
+</div>
+
+<div class="track-step">
+<div class="dot">3</div>
+<strong>مكتمل</strong>
+<span>استمتعوا بحكايتكم</span>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<div class="buttons">
+
+<a href="shop.html" class="primary">
+اكتشفوا المزيد
+</a>
+
+<a href="index.html" class="secondary">
+العودة للرئيسية
+</a>
+
+</div>
+
+
+<div class="demo-note">
+هذه تجربة متجر تجريبية لأغراض العرض فقط،
+ولم تتم أي عملية دفع أو طلب حقيقي.
+</div>
+
+</main>
+
+
+<div class="missing" id="missing">
+
+<h2>لا يوجد طلب حديث</h2>
+
+<p>
+يمكنكم تجربة المتجر وإضافة المنتجات إلى السلة.
+</p>
+
+<a href="shop.html">
+الذهاب للمتجر
+</a>
+
+</div>
+
+
+<script>
+
+function finishOrder(){
+
+const order = JSON.parse(
+localStorage.getItem("hikayaLastOrder") || "null"
+);
+
+if(!order){
+
+document.getElementById("successPage").style.display =
+"none";
+
+document.getElementById("missing").style.display =
+"block";
+
+return;
+}
+
+
+document.getElementById("orderNumber").textContent =
+order.orderNumber || "HW-000000";
+
+
+document.getElementById("orderTotal").textContent =
+Number(order.total || 0).toFixed(3) + " ر.ع";
+
+
+/*
+The demo order is complete.
+Clear the cart so the user can start a new order.
+*/
+
+localStorage.removeItem("hikayaCart");
+localStorage.removeItem("hikayaCheckout");
+
+}
+
+
+finishOrder();
+
+</script>
+
+</body>
+</html>
