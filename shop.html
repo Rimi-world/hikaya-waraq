@@ -1650,7 +1650,8 @@ card.className = "product";
 card.innerHTML = `
 
 <div class="product-art"
-style="background:${product.color}">
+style="background:${product.color};cursor:pointer"
+onclick="window.location.href='product.html?id=${product.id}'">
 
 ${product.badge ?
 `<span class="badge">${product.badge}</span>` : ""
